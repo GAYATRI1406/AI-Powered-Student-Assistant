@@ -1,0 +1,10 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const aiRoutes = require('./routes/ai.routes');
+const app = express();
+app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:3001'] }));
+app.use(express.json());
+app.use('/api/ai', aiRoutes);
+app.get('/', (req, res) => res.json({ message: 'API Running!' }));
+module.exports = app;
